@@ -186,7 +186,14 @@ const bookRouter = () => {
    *       tags:
    *         - Books
    *       summary: Check all books (Check Book)
-   *       description: Retrieve a list of all books in the library. Shows all existing books and their quantities. Books that are being borrowed are not counted.
+   *       description: |
+   *                    Retrieve a list of all books in the library.
+   *
+   *                    **Note:** The system will show list of books that are available
+   *
+   *                    **Note:** The system will show the number of books that are available
+   *
+   *                    **Note:** Books that are being borrowed are not counted
    *       responses:
    *         200:
    *           description: A list of books
@@ -313,8 +320,13 @@ const memberRouter = () => {
    *     get:
    *       tags:
    *         - Members
-   *       summary: Get all members
-   *       description: Retrieve a list of all members in the library system and The number of books being borrowed by each member
+   *       summary: Get all members (Check Member)
+   *       description: |
+   *                    Retrieve a list of all members.
+   *
+   *                    **Note:** The system will show all the existing members
+   *
+   *                    **Note:** The system will show the number of books borrowed by each member
    *       responses:
    *         200:
    *           description: A list of members

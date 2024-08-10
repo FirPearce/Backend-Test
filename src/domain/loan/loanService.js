@@ -29,24 +29,24 @@ class LoanService {
         status_book: statusBook,
       });
 
-      return this.loanRepository.addLoan(loanInfo);
+      return await this.loanRepository.addLoan(loanInfo);
     }
   }
 
   async findAll() {
-    return this.loanRepository.findAll();
+    return await this.loanRepository.findAll();
   }
 
   async findByCode(loanCode) {
-    return this.loanRepository.findByCode(loanCode);
+    return await this.loanRepository.findByCode(loanCode);
   }
 
   async findLoanByMemberCode(codeMember) {
-    return this.loanRepository.findLoanByMemberCode(codeMember);
+    return await this.loanRepository.findLoanByMemberCode(codeMember);
   }
 
-  findLoanByBookCode(codeBook) {
-    return this.loanRepository.findLoanByBookCode(codeBook);
+  async findLoanByBookCode(codeBook) {
+    return await this.loanRepository.findLoanByBookCode(codeBook);
   }
 
   async updateLoan(loanCode, loanInfo) {
@@ -94,11 +94,11 @@ class LoanService {
         penalize_date: member.penalize_date,
       });
     }
-    return this.loanRepository.updateLoan(loanCode, loanInfo);
+    return await this.loanRepository.updateLoan(loanCode, loanInfo);
   }
 
   async removeLoan(loanCode) {
-    return this.loanRepository.removeLoan(loanCode);
+    return await this.loanRepository.removeLoan(loanCode);
   }
 }
 

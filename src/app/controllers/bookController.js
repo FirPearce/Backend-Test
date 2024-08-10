@@ -32,16 +32,6 @@ const findByCode = async (req, res) => {
   }
 };
 
-const findAvailable = async (req, res) => {
-  try {
-    const bookService = new BookService();
-    const books = await bookService.findAvailable();
-    res.status(200).json({ result: books });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-};
-
 const updateBook = async (req, res) => {
   try {
     const bookService = new BookService();
@@ -71,7 +61,6 @@ module.exports = {
   addBook,
   findAll,
   findByCode,
-  findAvailable,
   updateBook,
   removeBook,
 };

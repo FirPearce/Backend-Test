@@ -12,7 +12,8 @@ class BookRepository {
   }
 
   async findAll() {
-    return Book.find();
+    // find all books stock greater than 0
+    return Book.find({ stock: { $gt: 0 } });
   }
 
   async updateBook(bookCode, bookInfo) {

@@ -4,23 +4,23 @@ class MemberRepository {
   async addMember(memberInfo) {
     const member = Member(memberInfo);
     await member.save();
-    return member;
+    return await member;
   }
 
   async findByCode(memberCode) {
-    return Member.findOne({ code: memberCode });
+    return await Member.findOne({ code: memberCode });
   }
 
   async findAll() {
-    return Member.find();
+    return await Member.find();
   }
 
   async updateMember(memberCode, memberInfo) {
-    return Member.updateOne({ code: memberCode }, memberInfo);
+    return await Member.updateOne({ code: memberCode }, memberInfo);
   }
 
   async removeMember(memberCode) {
-    return Member.deleteOne({ code: memberCode });
+    return await Member.deleteOne({ code: memberCode });
   }
 }
 

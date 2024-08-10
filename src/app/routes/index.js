@@ -13,7 +13,6 @@ const bookRouter = () => {
   router.post("/books", bookController.addBook);
   router.get("/books", bookController.findAll);
   router.get("/books/:code", bookController.findByCode);
-  router.get("/books/available", bookController.findAvailable);
   router.put("/books/:code", bookController.updateBook);
   router.delete("/books/:code", bookController.removeBook);
 

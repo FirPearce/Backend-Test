@@ -6,23 +6,23 @@ class MemberService {
   }
 
   async addMember(memberInfo) {
-    return this.memberRepository.addMember(memberInfo);
+    return await this.memberRepository.addMember(memberInfo);
   }
 
   async findByCode(memberCode) {
-    return this.memberRepository.findByCode(memberCode);
+    return await this.memberRepository.findByCode(memberCode);
   }
 
   async findAll() {
-    return this.memberRepository.findAll();
+    return await this.memberRepository.findAll();
   }
 
   async updateMember(memberCode, memberInfo) {
-    return this.memberRepository.updateMember(memberCode, memberInfo);
+    return await this.memberRepository.updateMember(memberCode, memberInfo);
   }
 
   async removeMember(memberCode) {
-    return this.memberRepository.removeMember(memberCode);
+    return await this.memberRepository.removeMember(memberCode);
   }
 }
 

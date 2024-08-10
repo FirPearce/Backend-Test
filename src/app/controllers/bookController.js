@@ -51,7 +51,7 @@ const removeBook = async (req, res) => {
     const bookService = new BookService();
     const code = req.params.code;
     await bookService.removeBook(code);
-    res.status(204).send();
+    res.status(200).json({ message: "Book deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

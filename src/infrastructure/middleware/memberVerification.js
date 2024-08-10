@@ -1,7 +1,7 @@
 const MemberService = require("../../domain/member/memberService");
 
 const verifyMember = async (req, res, next) => {
-  const { code } = req.body;
+  const { code } = req.params;
   const memberService = new MemberService();
 
   try {
@@ -17,11 +17,13 @@ const verifyMember = async (req, res, next) => {
 
     const penalizedDate = member.penalize_date;
     const dateNow = new Date();
-    if (dateNow >= penalizedDate) {
-      await memberService.updateMember(code, {
-        status_member: "Active",
-        penalize_date: null,
-      });
+    if (penalizedDate !== null) {
+      if (dateNow >= penalizedDate) {
+        await memberService.updateMember(code, {
+          status_member: "Active",
+          penalize_date: null,
+        });
+      }
     }
 
     next();

@@ -1,7 +1,8 @@
 const LoanService = require("../../domain/loan/loanService");
 
 const returnLoan = async (req, res, next) => {
-  const { memberCode, bookCode, code } = req.body;
+  const { memberCode, bookCode } = req.body;
+  const code = req.params.code;
   const loanService = new LoanService();
 
   try {

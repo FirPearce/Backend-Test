@@ -35,8 +35,19 @@ const findByCode = async (req, res) => {
 const findLoanByMemberCode = async (req, res) => {
   try {
     const loanService = new LoanService();
-    const memberCode = req.params.memberCode;
+    const memberCode = req.params.code;
     const loans = await loanService.findLoanByMemberCode(memberCode);
+    res.status(200).json({ result: loans });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const findLoanByBookCode = async (req, res) => {
+  try {
+    const loanService = new LoanService();
+    const bookCode = req.params.code;
+    const loans = await loanService.findLoanByBookCode(bookCode);
     res.status(200).json({ result: loans });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -47,7 +58,7 @@ const updateLoan = async (req, res) => {
   try {
     const loanService = new LoanService();
     const loanInfo = req.body;
-    const code = loanInfo.code;
+    const code = req.params.code;
     const loan = await loanService.updateLoan(code, loanInfo);
     res
       .status(200)
@@ -60,9 +71,9 @@ const updateLoan = async (req, res) => {
 const removeLoan = async (req, res) => {
   try {
     const loanService = new LoanService();
-    const code = req.body;
+    const code = req.params.code;
     await loanService.removeLoan(code);
-    res.status(204).send();
+    res.status(200).json({ message: "Loan deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -75,4 +86,5 @@ module.exports = {
   updateLoan,
   removeLoan,
   findLoanByMemberCode,
+  findLoanByBookCode,
 };

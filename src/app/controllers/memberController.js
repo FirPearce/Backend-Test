@@ -53,7 +53,7 @@ const removeMember = async (req, res) => {
     const memberService = new MemberService();
     const code = req.params.code;
     await memberService.removeMember(code);
-    res.status(204).send();
+    res.status(200).json({ message: "Member deleted successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

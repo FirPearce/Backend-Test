@@ -12,8 +12,17 @@ const returnLoan = async (req, res, next) => {
         .json({ message: "Book code and member code are required!" });
     }
 
-    // check if book is borrowed by member
     const loanBook = await loanService.findByCode(code);
+
+    // jika loan tidak ditemukan
+    if (!loanBook) {
+      return res.status(400).json({ message: "Loan Code not found" });
+    }
+
+    // jika tidak sesuai code loan
+    if (loanBook.code !== code) {
+      return res.status(400).json({ message: "Loan code is invalid" });
+    }
 
     if (loanBook.memberCode !== memberCode) {
       return res.status(400).json({
@@ -21,9 +30,14 @@ const returnLoan = async (req, res, next) => {
       });
     }
 
-    // // check if book is returned
+    // check if book is returned
     if (loanBook.status_loan === "Returned") {
       return res.status(400).json({ message: "Book is already returned" });
+    }
+
+    //  check if bookCode is same with BookService code
+    if (loanBook.bookCode !== bookCode) {
+      return res.status(400).json({ message: "Book code is invalid" });
     }
     next();
   } catch (error) {

@@ -51,7 +51,7 @@ const updateLoan = async (req, res) => {
     const loan = await loanService.updateLoan(code, loanInfo);
     res
       .status(200)
-      .json({ message: "Loan updated successfully", result: loan });
+      .json({ message: "Loan updated successfully", result: loan._doc });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }

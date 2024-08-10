@@ -1,5 +1,5 @@
 const CountWords = (input, query) => {
-  let result = [];
+  const result = [];
   for (let i = 0; i < query.length; i++) {
     let countTemp = 0;
     for (let j = 0; j < input.length; j++) {

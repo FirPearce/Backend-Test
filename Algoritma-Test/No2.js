@@ -14,7 +14,7 @@ ubah nilai dari variabel [const text = "Saya sangat senang mengerjakan soal algo
 jalankan kode pada terminal "node Algoritma-Test/No2.js"
 */
 const longSentence = (sentence) => {
-  let words = sentence.split(" ");
+  const words = sentence.split(" ");
   let maxWord = 0;
   let getWord = "";
   for (let i = 0; i < words.length; i++) {

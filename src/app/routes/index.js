@@ -8,6 +8,7 @@ const loanController = require("../controllers/loanController");
 // middleware
 const loanVerification = require("../../infrastructure/middleware/loanVerification");
 const returnVerification = require("../../infrastructure/middleware/returnVerification");
+const memberVerification = require("../../infrastructure/middleware/memberVerification");
 
 const bookRouter = () => {
   router.post("/books", bookController.addBook);
@@ -22,7 +23,7 @@ const bookRouter = () => {
 const memberRouter = () => {
   router.post("/members", memberController.addMember);
   router.get("/members", memberController.findAll);
-  router.get("/members/:code", memberController.findByCode);
+  router.get("/members/:code", memberVerification, memberController.findByCode);
   router.put("/members/:code", memberController.updateMember);
   router.delete("/members/:code", memberController.removeMember);
 

@@ -9,20 +9,20 @@ class MemberService {
     return this.memberRepository.addMember(memberInfo);
   }
 
-  async findByCode(code) {
-    return this.memberRepository.findByCode(code);
+  async findByCode(memberCode) {
+    return this.memberRepository.findByCode(memberCode);
   }
 
   async findAll() {
     return this.memberRepository.findAll();
   }
 
-  async updateMember(code, memberInfo) {
-    return this.memberRepository.updateMember(code, memberInfo);
+  async updateMember(memberCode, memberInfo) {
+    return this.memberRepository.updateMember(memberCode, memberInfo);
   }
 
-  async removeMember(code) {
-    return this.memberRepository.removeMember(code);
+  async removeMember(memberCode) {
+    return this.memberRepository.removeMember(memberCode);
   }
 }
 

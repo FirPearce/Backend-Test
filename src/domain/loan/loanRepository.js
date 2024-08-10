@@ -11,16 +11,16 @@ class LoanRepository {
     return Loan.find();
   }
 
-  async findByCode(code) {
-    return Loan.findOne({ code });
+  async findByCode(loanCode) {
+    return Loan.findOne({ code: loanCode });
   }
 
-  async findLoanByMemberCode(memberCode) {
-    return Loan.find({ memberCode });
+  async findLoanByMemberCode(codeMember) {
+    return Loan.find({ memberCode: codeMember });
   }
 
-  async findLoanByBookCode(bookCode) {
-    return Loan.find({ bookCode });
+  async findLoanByBookCode(codeBook) {
+    return Loan.find({ bookCode: codeBook });
   }
 
   async updateLoan(loanCode, loanInfo) {

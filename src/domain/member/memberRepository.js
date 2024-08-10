@@ -7,20 +7,20 @@ class MemberRepository {
     return member;
   }
 
-  async findByCode(code) {
-    return Member.findOne({ code });
+  async findByCode(memberCode) {
+    return Member.findOne({ code: memberCode });
   }
 
   async findAll() {
     return Member.find();
   }
 
-  async updateMember(code, memberInfo) {
-    return Member.updateOne({ code }, memberInfo);
+  async updateMember(memberCode, memberInfo) {
+    return Member.updateOne({ code: memberCode }, memberInfo);
   }
 
-  async removeMember(code) {
-    return Member.deleteOne({ code });
+  async removeMember(memberCode) {
+    return Member.deleteOne({ code: memberCode });
   }
 }
 

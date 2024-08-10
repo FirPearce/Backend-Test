@@ -7,20 +7,20 @@ class BookRepository {
     return newBook;
   }
 
-  async findByCode(code) {
-    return Book.findOne({ code });
+  async findByCode(bookCode) {
+    return Book.findOne({ code: bookCode });
   }
 
   async findAll() {
     return Book.find();
   }
 
-  async updateBook(code, bookInfo) {
-    return Book.updateOne({ code }, bookInfo);
+  async updateBook(bookCode, bookInfo) {
+    return Book.updateOne({ code: bookCode }, bookInfo);
   }
 
-  async removeBook(code) {
-    return Book.deleteOne({ code });
+  async removeBook(bookCode) {
+    return Book.deleteOne({ code: bookCode });
   }
 }
 

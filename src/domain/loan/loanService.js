@@ -37,24 +37,24 @@ class LoanService {
     return this.loanRepository.findAll();
   }
 
-  async findByCode(code) {
-    return this.loanRepository.findByCode(code);
+  async findByCode(loanCode) {
+    return this.loanRepository.findByCode(loanCode);
   }
 
-  async findLoanByMemberCode(memberCode) {
-    return this.loanRepository.findLoanByMemberCode(memberCode);
+  async findLoanByMemberCode(codeMember) {
+    return this.loanRepository.findLoanByMemberCode(codeMember);
   }
 
-  findLoanByBookCode(bookCode) {
-    return this.loanRepository.findLoanByBookCode(bookCode);
+  findLoanByBookCode(codeBook) {
+    return this.loanRepository.findLoanByBookCode(codeBook);
   }
 
-  async updateLoan(code, loanInfo) {
+  async updateLoan(loanCode, loanInfo) {
     // check if bookCode is updated
     const { memberCode, bookCode } = loanInfo;
     const member = await this.memberService.findByCode(memberCode);
     const book = await this.bookService.findByCode(bookCode);
-    const loan = await this.loanRepository.findByCode(code);
+    const loan = await this.loanRepository.findByCode(loanCode);
     let statusBook;
 
     if (!member || !book) {
@@ -94,11 +94,11 @@ class LoanService {
         penalize_date: member.penalize_date,
       });
     }
-    return this.loanRepository.updateLoan(code, loanInfo);
+    return this.loanRepository.updateLoan(loanCode, loanInfo);
   }
 
-  async removeLoan(code) {
-    return this.loanRepository.removeLoan(code);
+  async removeLoan(loanCode) {
+    return this.loanRepository.removeLoan(loanCode);
   }
 }
 
